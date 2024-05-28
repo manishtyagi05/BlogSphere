@@ -2,21 +2,35 @@
 <html lang="en">
 <head>
    <%- include('./partials/head') %>
-   <title>Blog</title>
+   <title>Blog - <%= blog.title %></title>
+
+  <style>
+     .blog-body {
+        font-size: 22px; 
+           font-family:Nunito;
+           white-space: pre-wrap; 
+           overflow-wrap: break-word; 
+           line-height: 1.6;
+           height: auto; 
+       }
+  </style>
 </head>
 <body>
    <%- include('./partials/nav') %> 
 
    <div class="container mt-4">
-       <h1><%= blog.title %></h1>
-       <img src="<%= blog.coverImageURL %>" width="500px"/> 
-       <pre class="mt-3"><%= blog.body %></pre>
+    <h1 class="blog-title"><%= blog.title %></h1>
+       <img src="<%= blog.coverImageURL %>" width="400px" class="cover-image" /> 
+       <pre class="mt-5 blog-body"><%= blog.body %></pre> 
    </div>
 
    <div class="container mt-4">
-       <img src="<%= blog.createdBy.profileImageURL %>" width="100px"/> 
-       <%= blog.createdBy.fullName %>
-   </div>
+    <p>Published by:</p>
+    <div class="author-info">
+        <img src="<%= blog.createdBy.profileImageURL %>" width="50px" />
+        <%= blog.createdBy.fullName %>
+    </div>
+</div>
 
    <div class="container mt-3">
        <h1>Comments  (<%= comments.length %>)</h1>
